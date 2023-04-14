@@ -46,6 +46,8 @@ public class Stack<T> {
         this.list.setFirst(prev);
     }
 
+
+
     @Override
     public String toString() {
         return this.list.toString();
