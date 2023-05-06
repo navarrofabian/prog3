@@ -1,5 +1,5 @@
 package tp2.ej1;
-
+import java.util.List;
 public class Main {
     public static void main(String[] args) {
         BinarySearchTree bt = new BinarySearchTree();
@@ -10,8 +10,21 @@ public class Main {
         bt.insert(7);
         bt.insert(12);
         bt.insert(20);
+        bt.insert(1);
 
-        System.out.println("Árbol in-order: ");
-        bt.inorderTraversal(bt.getRaiz());
+        System.out.println(bt.hasElem(8));
+        System.out.println(bt.hasElem(14));
+        System.out.println(bt.hasElem(5));
+        System.out.print("La altura del arbol es: ");
+        System.out.println(bt.getHeight());
+
+        List<Integer> longestBranch = bt.getLongestBranch();
+        System.out.println("Longest branch: " + longestBranch);
+
+        List<Integer> hojas = bt.getFrontera();
+        System.out.println("Hojas: " + hojas);
+        System.out.println("max: " + bt.getMaxElem());
+        System.out.println(("elementos en el nivel: " + bt.getElemAtLevel(3)));
+        System.out.println("La suma total del arbol es: " + bt.sumaTotal());
     }
 }
