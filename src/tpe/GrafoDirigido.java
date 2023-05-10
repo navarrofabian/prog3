@@ -122,7 +122,6 @@ public class GrafoDirigido<T> implements Grafo<T> {
 
 	@Override
 	public Iterator<Arco<T>> obtenerArcos() {
-		// TODO Auto-generated method stub
 		ArrayList<Arco<T>> ar = new ArrayList<Arco<T>>();
 		for(ArrayList<Arco<T>> i: vertices.values()) {//O(n) donde n es la cantidad de vertices
 			ar.addAll(i);//+O(k) donde k es la cantidad de arcos que tiene cada vertices.

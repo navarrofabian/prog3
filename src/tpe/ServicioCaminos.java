@@ -3,8 +3,6 @@ package tpe;
 import java.util.ArrayList;
 import java.util.List;
 
-import ProgramacionIII.tpe.Grafo;
-
 public class ServicioCaminos {
 
 	private Grafo<?> grafo;

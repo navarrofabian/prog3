@@ -65,12 +65,18 @@ public class GrafoDirigido implements Grafo{
         }
     }
 
-    public void dfs(int verticeId) {
+    public void dfs() {
         Set<Integer> visitados = new HashSet<Integer>();
-        dfsAux(verticeId, visitados);
+
+        // Recorrer todos los vértices del grafo
+        for (Integer verticeId : vertices.keySet()) {
+            if (!visitados.contains(verticeId)) {
+                dfsRec(verticeId, visitados);
+            }
+        }
     }
 
-    private void dfsAux(int verticeId, Set<Integer> visitados) {
+    private void dfsRec(int verticeId, Set<Integer> visitados) {
         visitados.add(verticeId);
         System.out.print(verticeId + " ");
 
@@ -78,7 +84,7 @@ public class GrafoDirigido implements Grafo{
         for (Arco arco : vertice.getArcos()) {
             int adyacente = arco.getDestino();
             if (!visitados.contains(adyacente)) {
-                dfsAux(adyacente, visitados);
+                dfsRec(adyacente, visitados);
             }
         }
     }
@@ -166,5 +172,37 @@ public class GrafoDirigido implements Grafo{
         caminoActual.remove(caminoActual.size() - 1);
         visitados.remove(actual);
     }
+
+    /*
+        public boolean dfs() {
+        Set<Integer> visitados = new HashSet<Integer>();
+        boolean ciclo = false;
+        // Recorrer todos los vértices del grafo
+        for (Integer verticeId : vertices.keySet()) {
+            if (!visitados.contains(verticeId)) {
+                dfsRec(verticeId, visitados, ciclo);
+            }
+        }
+        return ciclo;
+    }
+
+    private void dfsRec(int verticeId, Set<Integer> visitados, boolean ciclo) {
+        visitados.add(verticeId);
+        System.out.print(verticeId + " ");
+
+        Vertice vertice = vertices.get(verticeId);
+        for (Arco arco : vertice.getArcos()) {
+            int adyacente = arco.getDestino();
+            if (!visitados.contains(adyacente)) {
+                dfsRec(adyacente, visitados, ciclo);
+            }
+            else{
+                ciclo = true;
+                System.out.println("Hay ciclo");
+            }
+        }
+    }
+
+     */
 
 }
