@@ -1,19 +1,13 @@
 package tpe;
-
 import java.util.*;
-
 public class ServicioBFS {
-
 	private Grafo<?> grafo;
-	
 	public ServicioBFS(Grafo<?> grafo) {
 		this.grafo = grafo;
 	}
-
 	public List<Integer> bfsForest() {
 		Set<Integer> visitados = new HashSet<>();
 		List<List<Integer>> forest = new ArrayList<>();
-
 		for (Iterator<Integer> it = grafo.obtenerVertices(); it.hasNext(); ) {
 			Integer v = it.next();
 			if(!visitados.contains(v)){
@@ -21,7 +15,6 @@ public class ServicioBFS {
 				Queue<Integer> cola = new LinkedList<>();
 				cola.add(v);
 				List<Integer> arbol = new ArrayList<>();
-
 				while(!cola.isEmpty()){
 					//poll() extrae y elimina el primer elemento de la cola
 					int actual = cola.poll();

@@ -9,8 +9,9 @@ public class GrafoDirigido<T> implements Grafo<T> {
 	private HashMap<Integer, ArrayList<Arco<T>>> vertices;
 	private int cantArcos;
 	public GrafoDirigido(){
-		HashMap<Integer,ArrayList<Arco<T>>> vertices = new HashMap<Integer, ArrayList<Arco<T>>>();
+		vertices = new HashMap<Integer, ArrayList<Arco<T>>>();
 		int cantArcos = 0;
+
 	}
 
 	@Override
