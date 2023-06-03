@@ -20,13 +20,13 @@ public class ServicioCaminos {
 	public List<List<Integer>> caminos() {
 		List<List<Integer>> caminos = new ArrayList<>();
 		List<Integer> caminoActual = new ArrayList<>();
-		Set<Arco> arcosVisitados = new HashSet<>();
+		Set<Arco<?>> arcosVisitados = new HashSet<>();
 		dfsCaminos(origen, destino, lim, caminoActual, caminos, arcosVisitados);
 
 		return caminos;
 	}
 
-	private void dfsCaminos(int actual, int destino, int lim, List<Integer> caminoActual, List<List<Integer>> caminos, Set<Arco> arcosVisitados) {
+	private void dfsCaminos(int actual, int destino, int lim, List<Integer> caminoActual, List<List<Integer>> caminos, Set<Arco<?>> arcosVisitados) {
 		caminoActual.add(actual);
 
 		if (actual == destino) {
@@ -35,8 +35,7 @@ public class ServicioCaminos {
 
 			for (Iterator<Integer> it = grafo.obtenerAdyacentes(actual); it.hasNext(); ) {
 				int ad = it.next();
-				Arco arco = new Arco(actual, ad, null); // Crear el arco actual
-
+				Arco<?> arco = grafo.obtenerArco(actual, ad);
 				if (!arcosVisitados.contains(arco)) { //revisar && !visitados.contains(vecino)
 					arcosVisitados.add(arco); // Marcar el arco como visitado
 					dfsCaminos(ad, destino, lim, caminoActual, caminos, arcosVisitados);
