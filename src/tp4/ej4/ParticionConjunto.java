@@ -23,16 +23,16 @@ public class ParticionConjunto {
             return false;
         }
 
-        ArrayList<Integer> subset = new ArrayList<>();
-        backtrack(0, subset, 0, sumaTotal / 2);
+        ArrayList<Integer> conjuntoActual = new ArrayList<>();
+        backtrack(0, conjuntoActual, 0, sumaTotal / 2);
         return encontrado;
     }
 
-    private void backtrack(int index, ArrayList<Integer> subset, int sumaActual, int sumaObjetivo) {
+    private void backtrack(int index, ArrayList<Integer> conjuntoActual, int sumaActual, int sumaObjetivo) {
         if (sumaActual == sumaObjetivo) {
             // Se encontró una partición válida
             encontrado = true;
-            System.out.println("Partición encontrada: " + subset);
+            System.out.println("Partición encontrada: " + conjuntoActual);
             return;
         }
 
@@ -42,11 +42,11 @@ public class ParticionConjunto {
         }
 
         // Incluir el elemento actual en el subconjunto
-        subset.add(conjunto.get(index));
-        backtrack(index + 1, subset, sumaActual + conjunto.get(index), sumaObjetivo);
-        subset.remove(subset.size() - 1); // Deshacer el cambio
+        conjuntoActual.add(conjunto.get(index));
+        backtrack(index + 1, conjuntoActual, sumaActual + conjunto.get(index), sumaObjetivo);
+        conjuntoActual.remove(conjuntoActual.size() - 1); // Deshacer el cambio
 
         // No incluir el elemento actual en el subconjunto
-        backtrack(index + 1, subset, sumaActual, sumaObjetivo);
+        backtrack(index + 1, conjuntoActual, sumaActual, sumaObjetivo);
     }
 }
